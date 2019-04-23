@@ -21,4 +21,51 @@ def BinarySearch(nums,target):
   return -1
   
   
-  
+  calculate x^n 
+
+python:
+
+def power(x, n):
+    if n == 0:
+        return 1
+    
+    if n % 2 == 0:
+        tmp = power(x, n // 2)
+        return tmp * tmp
+    else:
+        tmp = power(x, n // 2)
+        return tmp * tmp * x
+ 。
+c++:
+
+int power(int x, int n) {
+    if (n == 0) return 1;
+    if (n % 2 == 0) {
+        int tmp = power(x, n / 2);
+        return tmp * tmp;
+    } else {
+        int tmp = power(x, n / 2);
+        return tmp * tmp * x;
+    }
+}
+
+
+
+求最大公约数 gcd
+
+python
+
+def gcd(big, small):
+    if small != 0:
+        return gcd(small, big % small)
+    else:
+        return big
+        
+ c++
+ int gcd(int big, int small) {
+    if (small != 0) {
+        return gcd(small, big % small);
+    } else {
+        return big;
+    }
+}
