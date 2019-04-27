@@ -4,3 +4,27 @@ can be built with those letters.
 
 c++
 
+class Solution {
+public:
+    /**
+     * @param s: a string which consists of lowercase or uppercase letters
+     * @return: the length of the longest palindromes that can be built
+     */
+    int longestPalindrome(string &s) {
+        // write your code here
+        int size = s.size();
+        unordered_map<char, int> container;
+        for (int i=0; i<size; i++){
+            container[s[i]]++;
+        }
+        int flag_odd = 0, total_num = 0;
+        for (auto element: container){
+            if (element.second % 2 != 0){
+                flag_odd = 1;
+                total_num += element.second - 1;
+            }
+            else total_num += element.second;
+        }
+        return total_num+flag_odd;
+    }
+};
