@@ -1,0 +1,43 @@
+
+Find the last position of a target number in a sorted array. Return -1 if target does not exist.
+
+
+
+
+
+    class Solution {
+public:
+    /**
+     * @param nums: An integer array sorted in ascending order
+     * @param target: An integer
+     * @return: An integer
+     */
+    int lastPosition(vector<int> &nums, int target) {
+        // write your code here
+        int len = nums.size();
+        int left = -1, right = len;
+
+        if (len == 0) 
+            return -1;
+       // if (target > nums[len] || target < nums[0]) 
+         //   return -1;
+        if (nums[len] == target) 
+            return len;
+            
+        while (left+1 != right){
+            //if (nums[left]==target && nums[right] == target)
+            //    break;
+            int mid=(right + left) / 2;
+            if (nums[mid]>target) 
+                right = mid;
+            else  
+                left=mid;
+        }
+        if (nums[right] == target)
+            return right;
+        else if (nums[left] == target) 
+            return left;
+        else 
+            return -1;
+    }
+};
