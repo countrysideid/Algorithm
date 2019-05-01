@@ -1,0 +1,29 @@
+Implement pow(x, n). (n is an integer.)
+
+c++
+
+class Solution {
+public:
+    /**
+     * @param x: the base number
+     * @param n: the power number
+     * @return: the result
+     */
+    double myPow(double x, int n) {
+        // write your code here
+        if (n==0)
+            return 1;
+        if (n < 0){
+            x = 1/x;
+            n = -n;
+    }
+
+        double half = myPow(x, n/2);
+        if (n%2)
+            return half*half*x;
+        else 
+            return half*half;
+
+            
+    }
+};
