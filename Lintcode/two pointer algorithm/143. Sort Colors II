@@ -1,0 +1,33 @@
+Given an array of n objects with k different colors (numbered from 1 to k), sort them so that objects of the same color are adjacent, with the colors in the order 1, 2, ... k.
+
+
+
+class Solution:
+    """
+    @param colors: A list of integer
+    @param k: An integer
+    @return: nothing
+    """
+    def sortColors2(self, colors, k):
+        # write your code here
+        return self.Qicksort(colors,  1,k,0, len(colors)-1)
+        
+    def Qicksort(self, colors,col_from,col_to, start, end):
+        if start == end or col_to == col_from:
+            return
+        l = start 
+        r = end
+        mid = (col_from + col_to) // 2
+        while (l <= r):
+            while (l <= r and colors[l] <= mid):
+                l += 1
+            while (l<= r and colors[r] > mid):
+                r -= 1
+            if l <= r:
+                colors[l], colors[r] = colors[r], colors[l]
+                l += 1
+                r -= 1
+        self.Qicksort(colors, col_from, mid, start, r)
+        self.Qicksort(colors, mid+1, col_to, l, end)
+            
+            
