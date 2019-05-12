@@ -1,0 +1,28 @@
+def bfs(graph, s):
+  q = []
+  seen = set()
+  q.append(s)
+  seen.add(s)
+  while len(q) > 0:
+    vertex = q.pop(0)
+    nodes = graph[vertex]
+    for i in nodes:
+      if i not in seen:
+        q.append(i)
+        seen.add(i)
+        
+        
+        
+        
+def dfs(graph, s):
+  stack = []
+  seen = set()
+  stack.append(s)
+  seen.add(s)
+  while len(stack) > 0:
+    vertex = stack.pop()
+    nodes = graph[vertex]
+    for i in nodes:
+      if i not in seen:
+        stack.append(i)
+        seen.add(i)
