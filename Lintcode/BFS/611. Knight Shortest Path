@@ -1,0 +1,43 @@
+Given a knight in a chessboard (a binary matrix with 0 as empty and 1 as barrier) with a source position, find the shortest path to a destination position, return the length of the route.
+Return -1 if destination cannot be reached.
+
+
+class Solution:
+    """
+    @param grid: a chessboard included 0 (false) and 1 (true)
+    @param source: a point
+    @param destination: a point
+    @return: the shortest path 
+    """
+    def shortestPath(self, grid, source, destination):
+        # write your code here
+        if source == destination:
+            return 0
+        # if ((source.x = destination.x) and ((source.y + 1 = destination.y) or (source.y - 1 = destination.y))) or ((source.y==destination.y) and 
+        # ((source.x + 1 = destination.x) or (source.x - 1 = destination.x)))):
+        #     return 1
+        
+        move = [(1,2), (1,-2), (-1,2), (-1,-2), (2,1), (2,-1),(-2,1), (-2,-1)]
+        distance = {(source.x, source.y):0}
+        q= [(source.x, source.y)]
+        
+        while q:
+            x,y = q.pop(0)
+            if x == destination.x and y == destination.y:
+                return distance[(x, y)]
+            for i,j in move:
+                next_x, next_y = x + i, y+j
+                if (next_x, next_y) in distance:
+                    continue
+                if not self.is_valid(grid, next_x, next_y):
+                    continue
+                distance[(next_x, next_y)] = distance[(x,y)]+ 1
+                q.append((next_x, next_y))
+        return -1
+        
+            
+                
+                
+        
+    def is_valid(self, grid,x,y):
+        return (x>=0) and (x<len(grid)) and ( y>=0)and (y < len(grid[0])) and ( grid[x][y] == 0)
