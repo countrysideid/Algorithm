@@ -1,0 +1,48 @@
+There are a total of n courses you have to take, labeled from 0 to n - 1.
+Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
+
+Given the total number of courses and a list of prerequisite pairs, return the ordering of courses you should take to finish all courses.
+
+There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.
+
+
+class Solution:
+    """
+    @param: numCourses: a total of n courses
+    @param: prerequisites: a list of prerequisite pairs
+    @return: the course order
+    """
+    def findOrder(self, numCourses, prerequisites):
+        # write your code here
+        result = []
+        if not prerequisites or len(prerequisites) == 0:
+            for i in range(numCourses):
+                result.append(i)
+            return result
+        
+        indegree = {i:0 for i in range(numCourses)}
+        pre_dict = {i: [] for i in range(numCourses)}
+        
+        for i, j in prerequisites:
+            pre_dict[j].append(i)
+            indegree[i] += 1
+        
+        q = []
+        count = 0
+        # result = []
+        for i in indegree:
+            if indegree[i] == 0:
+                q.append(i)
+                
+        while q:
+            v = q.pop(0)
+            result.append(v)
+            count += 1
+            for i in pre_dict[v]:
+                indegree[i] -= 1
+                if indegree[i] == 0:
+                    q.append(i)
+        if count != numCourses:
+            return []
+        else:
+            return result
