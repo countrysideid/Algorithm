@@ -57,13 +57,9 @@ class Solution(object):
 
 This problem is intuitive with stack. However, some people may use multiple stacks to store stings inside brackets and outside brackets, which may take extrac space.
 
-# 2. [Weakness-2] Can’t figure out...
-
-# 3. [Bug-1] Forget to push node into queue while expanding the nodes
-
-# 4. [Bug-2] Mistake when ...
+2. [Bug-1] Not familiar with stack, so that write too many conditions, and got lost in the loop.
 
 ## My Similar Problems
 
-LeetCode 103: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal
-LeetCode 107: https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+LeetCode 271: https://leetcode.com/problems/encode-and-decode-strings/
+LeetCode 880: https://leetcode.com/problems/decoded-string-at-index/
