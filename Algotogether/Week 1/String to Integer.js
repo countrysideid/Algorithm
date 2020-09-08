@@ -1,4 +1,3 @@
-'''python
 class Solution(object):
     def myAtoi(self, str):
         """
@@ -45,4 +44,3 @@ class Solution(object):
         else:
             return 0
 
-'''
