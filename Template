@@ -1,0 +1,9 @@
+BFS:  queue = collections.deque([(start, 0)])
+      seen = {start}
+      while queue:
+          node, depth = queue.popleft()
+          if node == target: return depth
+          for nei in neighbors(node):
+              if nei not in seen:
+                  seen.add(nei)
+                  queue.append((nei, depth+1))
